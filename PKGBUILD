@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-dashboard"
 _nodename="cellframe-node"
-pkgver=2.13.34
+pkgver=2.14.17
 pkgrel=1
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(qt5-graphicaleffects qt5-base qt5-quickcontrols2 qt5-quickcontrols logrotate libxcrypt-compat)
 makedepends=(git qt5-base qt5-declarative cmake python3)
 options=(!debug)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=fa0f405873d28e0b6ea70baed68f9ddb8c3b3b85
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=ce9a51a4664657ca34e54b97052c5ee8ba5877ec
 		cellframe-node.logrotate
 		cellframe-node-logrotate.timer
 		cellframe-node-logrotate.service
@@ -20,37 +20,23 @@ md5sums=('SKIP'
          '47edb0d55d537e72f3de07ec6a72ea78'
          '7c1087eea7336d99c4af55119673b009'
          '72472d529b38f06a78f37ac659b18d65')
-conflicts=(cellframe-node cellframe-wallet)
+conflicts=(cellframe-node cellframe-wallet cellframe-node-debug)
 install=$pkgname.install
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	cat << EOF > .gitmodules
-[submodule "cellframe-ui-sdk"]
-	path = cellframe-ui-sdk
-	url = https://gitlab.demlabs.net/cellframe/cellframe-ui-sdk.git
-	branch = master
-[submodule "dap-ui-sdk"]
-	path = dap-ui-sdk
-	url = https://gitlab.demlabs.net/dap/dap-ui-sdk
-	branch = master
-[submodule "prod_build"]
-	path = prod_build
-	url = https://gitlab.demlabs.net/cellframe/prod_build_cellframe-dashboard
-	branch = master
-[submodule "cellframe-node"]
-	path = cellframe-node
-	url = https://gitlab.demlabs.net/cellframe/cellframe-node
-	branch = master
-[submodule "web3_api"]
-	path = web3_api
-	url = https://gitlab.demlabs.net/cellframe/web3_api.git
-    branch = master
+	sed -i 's|url = ../prod_build_cellframe-dashboard|url = https://gitlab.demlabs.net/cellframe/prod_build_cellframe-dashboard|' .gitmodules
+	echo -n "+++ Fetching submodule sources..."
+	git submodule sync > /dev/null 2>&1
+	git submodule update --init --recursive > /dev/null 2>&1 &
+	pid=$!
 
-EOF
-	echo "+++ Fetching submodule sources..."
-	git submodule sync
-	git submodule update --init --recursive
+	while ps -p $pid > /dev/null; do
+    	echo -n "."
+    	sleep 1
+	done
+
+	wait $pid
 }
 
 build() {

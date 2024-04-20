@@ -62,10 +62,10 @@ post_install() {
 
     chmod +x $DASHBOARD_PATH/bin/*
     ln -sf $DASHBOARD_PATH/bin/Cellframe-Dashboard /usr/local/bin/Cellframe-Dashboard
-    
-    mkdir -p $NODE_PATH/var/{run,lib/wallet,lib/global_db,lib/plugins,log}
+    mkdir -p $NODE_PATH/var/{run,lib/wallet,lib/global_db,lib/plugins,lib/ca,log}
+    chmod 0777 $DAP_PREFIX/var/lib/ca/
     mkdir -p $DASHBOARD_PATH/dapps/download && chmod -R 0777 $DASHBOARD_PATH/dapps
-
+    update-desktop-database
     _showmsg
 }
 
