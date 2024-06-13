@@ -45,7 +45,7 @@ post_install() {
     sed -i "s|{DB_DRIVER}|mdbx|" $NODE_PATH/etc/cellframe-node.cfg
     
     echo "+++ Generating network configuration files..."
-    for _networks in mileena KelVPN Backbone subzero
+    for _networks in mileena KelVPN Backbone
     do
         cp $NODE_PATH/share/configs/network/$_networks.cfg.tpl $NODE_PATH/etc/network/$_networks.cfg
         sed -i 's|{NODE_TYPE}|full|' $NODE_PATH/etc/network/$_networks.cfg
@@ -63,7 +63,7 @@ post_install() {
     chmod +x $DASHBOARD_PATH/bin/*
     ln -sf $DASHBOARD_PATH/bin/Cellframe-Dashboard /usr/local/bin/Cellframe-Dashboard
     mkdir -p $NODE_PATH/var/{run,lib/wallet,lib/global_db,lib/plugins,lib/ca,log}
-    chmod 0777 $DAP_PREFIX/var/lib/ca/
+    chmod 0777 $NODE_PATH/var/lib/ca/
     mkdir -p $DASHBOARD_PATH/dapps/download && chmod -R 0777 $DASHBOARD_PATH/dapps
     update-desktop-database
     _showmsg
