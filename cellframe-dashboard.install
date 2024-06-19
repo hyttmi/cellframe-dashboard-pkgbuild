@@ -72,7 +72,7 @@ post_install() {
 pre_upgrade() {
     for _active in cellframe-dashboard.service cellframe-node.service cellframe-node-logrotate.timer
     do
-        systemctl is-active --quiet $_active.service && systemctl stop $_active.service && echo "+++ Stopped $_active service..."
+        systemctl is-active --quiet $_active.service && systemctl stop --quiet $_active.service && echo "+++ Stopped $_active service..."
     done
 }
 
@@ -80,7 +80,7 @@ post_upgrade() {
     systemctl daemon-reload
     for _active in cellframe-dashboard.service cellframe-node.service cellframe-node-logrotate.timer
     do
-        systemctl is-enabled --quiet $_active && systemctl start $_active && echo "+++ Started $_active..."
+        systemctl is-enabled --quiet $_active && systemctl restart --quiet $_active && echo "+++ Started $_active..."
     done
     _showmsg
 }
