@@ -1,0 +1,22 @@
+[Unit]
+Description=Cellframe Dashboard Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+WorkingDirectory=/opt/cellframe-dashboard
+ExecStartPre=+/bin/chown -R cellframe:cellframe /opt/cellframe-dashboard
+ExecStart=/opt/cellframe-dashboard/bin/Cellframe-DashboardService -D
+ExecStop=/opt/cellframe-dashboard/bin/Cellframe-DashboardService --stop
+User=cellframe
+Group=cellframe
+Restart=always
+
+# Hardening
+ProtectSystem=full
+ProtectHome=read-only
+NoNewPrivileges=true
+
+[Install] 
+WantedBy=multi-user.target

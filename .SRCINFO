@@ -1,9 +1,8 @@
 pkgbase = cellframe-dashboard
 	pkgdesc = Super application for managing Cellframe node
-	pkgver = 2.15.17
+	pkgver = 3.0.30
 	pkgrel = 1
 	url = https://cellframe.net
-	install = cellframe-dashboard.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
@@ -11,26 +10,18 @@ pkgbase = cellframe-dashboard
 	makedepends = qt5-base
 	makedepends = qt5-declarative
 	makedepends = cmake
-	makedepends = python3
 	depends = qt5-graphicaleffects
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	depends = qt5-quickcontrols
-	depends = logrotate
-	depends = libxcrypt-compat
-	conflicts = cellframe-node
-	conflicts = cellframe-wallet
-	conflicts = cellframe-node-debug
 	options = !debug
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=d503a94e0789d469628c703feca8b9af4bbd15e1
-	source = cellframe-node.logrotate
-	source = cellframe-node-logrotate.timer
-	source = cellframe-node-logrotate.service
-	source = cellframe-node.service
+	options = !buildflags
+	options = !makeflags
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=26107ec9d47a9b98589c4906f59276781d1674d8
+	source = cellframe-dashboard.service
+	source = cellframe-dashboard-tmpfiles.conf
 	md5sums = SKIP
-	md5sums = 6a52220e0b285dc9e803082f36897ad4
-	md5sums = 47edb0d55d537e72f3de07ec6a72ea78
-	md5sums = 7c1087eea7336d99c4af55119673b009
-	md5sums = 72472d529b38f06a78f37ac659b18d65
+	md5sums = 1c11f2471776e9a7b5346a32f28190d1
+	md5sums = 8e95f02e07c1f24093d01415cf59af2c
 
 pkgname = cellframe-dashboard
