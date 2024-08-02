@@ -14,6 +14,7 @@ pkgbase = cellframe-dashboard
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	depends = qt5-quickcontrols
+	depends = cellframe-node
 	options = !debug
 	options = !buildflags
 	options = !makeflags
