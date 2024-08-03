@@ -15,7 +15,7 @@ source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=4a1dedb11ab
 md5sums=('SKIP'
          '1c11f2471776e9a7b5346a32f28190d1'
          '8e95f02e07c1f24093d01415cf59af2c')
-#install=$pkgname.install
+install=$pkgname.install
 
 prepare() {
 	cd "$srcdir/$pkgname"

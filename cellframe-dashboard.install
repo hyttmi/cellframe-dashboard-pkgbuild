@@ -1,0 +1,15 @@
+showmsg() {
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+
+echo -e "
+${BOLD}RUNNING CELLFRAME DASHBOARD${NORMAL}
+
+    1.) Enable systemd service with ${BOLD}sudo systemctl start cellframe-dashboard.service${NORMAL}
+    2.) Launch Cellframe Dashboard from application menu
+    "
+}
+
+post_install() {
+    showmsg
+}
