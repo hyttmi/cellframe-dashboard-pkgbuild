@@ -20,10 +20,8 @@ pkgbase = cellframe-dashboard
 	options = !buildflags
 	options = !makeflags
 	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=4a1dedb11ab310a23965153d49ef43dcc7ca86d4
-	source = cellframe-dashboard.service
 	source = cellframe-dashboard-tmpfiles.conf
 	md5sums = SKIP
-	md5sums = 1c11f2471776e9a7b5346a32f28190d1
 	md5sums = 8e95f02e07c1f24093d01415cf59af2c
 
 pkgname = cellframe-dashboard
