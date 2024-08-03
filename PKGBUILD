@@ -25,7 +25,6 @@ prepare() {
 }
 
 build() {
-	cp "$srcdir/$pkgname.service" "$srcdir/$pkgname/os/debian/share/init.d/"
 	cd "$srcdir/$pkgname"
 	qmake
 	make -j$(nproc)
