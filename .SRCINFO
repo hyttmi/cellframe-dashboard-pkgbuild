@@ -1,6 +1,6 @@
 pkgbase = cellframe-dashboard
 	pkgdesc = Super application for managing Cellframe node
-	pkgver = 3.0.30
+	pkgver = 3.0.31
 	pkgrel = 1
 	url = https://cellframe.net
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = cellframe-dashboard
 	options = !debug
 	options = !buildflags
 	options = !makeflags
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=26107ec9d47a9b98589c4906f59276781d1674d8
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=4a1dedb11ab310a23965153d49ef43dcc7ca86d4
 	source = cellframe-dashboard.service
 	source = cellframe-dashboard-tmpfiles.conf
 	md5sums = SKIP

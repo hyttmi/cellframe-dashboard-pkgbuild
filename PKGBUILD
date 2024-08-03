@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-dashboard"
-pkgver=3.0.30
+pkgver=3.0.31
 pkgrel=1
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
@@ -8,8 +8,8 @@ url="https://cellframe.net"
 license=(GPL3)
 depends=(qt5-graphicaleffects qt5-base qt5-quickcontrols2 qt5-quickcontrols cellframe-node)
 makedepends=(git qt5-base qt5-declarative cmake)
-options=(!debug)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=26107ec9d47a9b98589c4906f59276781d1674d8
+options=(!debug !buildflags !makeflags)
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=4a1dedb11ab310a23965153d49ef43dcc7ca86d4
 		cellframe-dashboard.service
 		cellframe-dashboard-tmpfiles.conf)
 md5sums=('SKIP'
@@ -25,6 +25,7 @@ prepare() {
 }
 
 build() {
+	cp "$srcdir/$pkgname.service" "$srcdir/$pkgname/os/debian/share/init.d/"
 	cd "$srcdir/$pkgname"
 	qmake
 	make -j$(nproc)
