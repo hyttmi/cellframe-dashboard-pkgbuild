@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-dashboard"
-pkgver=3.0.36
+pkgver=3.0.40
 pkgrel=1
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
