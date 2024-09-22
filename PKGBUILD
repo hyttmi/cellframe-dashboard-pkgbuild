@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-dashboard"
 pkgver=3.0.61
-pkgrel=1
+pkgrel=2
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
 url="https://cellframe.net"
@@ -24,6 +24,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
+	qmake QMAKE_CFLAGS+="-Wno-error=incompatible-pointer-types"
 	qmake
 	make -j$(nproc)
 }
