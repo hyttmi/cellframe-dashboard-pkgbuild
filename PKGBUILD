@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-dashboard"
 pkgver=3.0.61
-pkgrel=2
+pkgrel=3
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
 url="https://cellframe.net"
@@ -19,13 +19,12 @@ prepare() {
 	cd "$srcdir/$pkgname"
 	sed -i 's|url = ../prod_build_cellframe-dashboard|url = https://gitlab.demlabs.net/cellframe/prod_build_cellframe-dashboard|' .gitmodules
 	git submodule sync > /dev/null 2>&1
-	git submodule update --init --recursive --progress
+	git submodule update --recursive --progress
 }
 
 build() {
 	cd "$srcdir/$pkgname"
 	qmake QMAKE_CFLAGS+="-Wno-error=incompatible-pointer-types"
-	qmake
 	make -j$(nproc)
 }
 
