@@ -1,6 +1,6 @@
 	# Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-dashboard"
-pkgver=3.0.65
+pkgver=3.0.70
 pkgrel=1
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
@@ -9,7 +9,7 @@ license=(GPL3)
 depends=(qt5-graphicaleffects qt5-base qt5-quickcontrols2 qt5-quickcontrols cellframe-node)
 makedepends=(git qt5-base qt5-declarative)
 options=(!debug)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=59e7b1f6806abefcff64962493fcf1ffdec568a7
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=4b1a6b2fea4954a58c8c22c8189c85bc4adfeae7
 		cellframe-dashboard-tmpfiles.conf)
 md5sums=('SKIP'
          '8e95f02e07c1f24093d01415cf59af2c')
@@ -20,7 +20,6 @@ prepare() {
 	sed -i 's|url = ../prod_build_cellframe-dashboard|url = https://gitlab.demlabs.net/cellframe/prod_build_cellframe-dashboard|' .gitmodules
 	git submodule sync > /dev/null 2>&1
 	git submodule update --init --recursive --progress
-	sed -i 's@CONFIG(release, debug | release): sdk_build.commands =.*@& -DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types"@' "$srcdir/$pkgname/cellframe-sdk/cellframe-sdk.pro"
 }
 
 build() {
