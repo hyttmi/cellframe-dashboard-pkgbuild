@@ -1,6 +1,6 @@
 pkgbase = cellframe-dashboard
 	pkgdesc = Super application for managing Cellframe node
-	pkgver = 3.1.12
+	pkgver = 3.1.13
 	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-dashboard.install
@@ -20,7 +20,7 @@ pkgbase = cellframe-dashboard
 	depends = qt5-base
 	depends = qt5-svg
 	options = !debug
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=c82ca2b634dbbb87b1258fe176b83ce74477b364
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=cfd908e72bf5ef76552e0e1766cd567bb8d806fb
 	source = cellframe-dashboard-tmpfiles.conf
 	md5sums = SKIP
 	md5sums = 8e95f02e07c1f24093d01415cf59af2c
