@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-dashboard"
-pkgver=3.1.21
+pkgver=3.1.22
 pkgrel=1
 pkgdesc="Super application for managing Cellframe node"
 arch=(x86_64 aarch64)
@@ -9,7 +9,7 @@ license=(GPL-3.0-or-later)
 depends=(qt5-graphicaleffects qt5-declarative qt5-quickcontrols2 qt5-quickcontrols zlib glibc gcc-libs qt5-base qt5-svg)
 makedepends=(git cmake libxslt)
 options=(!debug)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=b079369d914d6a99db410d57f94b5187359e1c68
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=b69b2ba461325e9624fa75fa0b3dde0c886c43ba
 		cellframe-dashboard-tmpfiles.conf)
 md5sums=('SKIP'
          '8e95f02e07c1f24093d01415cf59af2c')
